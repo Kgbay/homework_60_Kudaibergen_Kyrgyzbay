@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Product{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <ul class="menu">
+                <li>
+                  <a href="{% url 'products_view' %}">My products</a>
+                </li>
+                <li>
+                  <a href="{% url 'products_view' %}">Product</a>
+                </li>
+                <li>
+                  <a href="{% url 'product_add' %}">Add product</a>
+                </li>
+                <li>
+                    <a href="{% url 'category_add' %}">Add category</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% block content %}{% endblock %}
+</body>
+</html>
