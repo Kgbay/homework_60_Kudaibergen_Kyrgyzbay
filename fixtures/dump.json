@@ -5,11 +5,11 @@
   "fields": {
     "name": "Playstation 5",
     "desc": "Игровая консоль",
-    "category_id": 1,
+    "category_id": 3,
     "created_at": "2023-02-19T03:06:52.114Z",
     "updated_at": "2023-02-19T03:06:52.114Z",
-    "price": "5.00",
-    "img_link": ""
+    "price": "500.00",
+    "img_link": "https://avatars.mds.yandex.net/get-mpic/4034372/img_id3209380317634664001.jpeg/900x1200"
   }
 },
 {
@@ -22,7 +22,85 @@
     "created_at": "2023-02-19T03:12:27.120Z",
     "updated_at": "2023-02-19T03:12:27.120Z",
     "price": "25.00",
-    "img_link": ""
+    "img_link": "https://avatars.mds.yandex.net/i?id=f165b1a493d5194bc55b9e413ca2b7ae20a72c8d-8357156-images-thumbs&n=13"
+  }
+},
+{
+  "model": "online_store.product",
+  "pk": 16,
+  "fields": {
+    "name": "Ноутбук",
+    "desc": "Ноутбук",
+    "category_id": 1,
+    "created_at": "2023-02-20T06:52:23.211Z",
+    "updated_at": "2023-02-20T06:52:23.212Z",
+    "price": "200.00",
+    "img_link": "https://moon.kz/upload/iblock/363/36318557df58d768010f27ea74e16bc5.png"
+  }
+},
+{
+  "model": "online_store.product",
+  "pk": 17,
+  "fields": {
+    "name": "Электрочайник",
+    "desc": "Чайник для чая",
+    "category_id": 2,
+    "created_at": "2023-02-20T07:11:37.951Z",
+    "updated_at": "2023-02-20T07:11:37.951Z",
+    "price": "20.00",
+    "img_link": "https://images.satu.kz/180600682_w640_h640_elektricheskij-chajnik-22.jpg"
+  }
+},
+{
+  "model": "online_store.product",
+  "pk": 21,
+  "fields": {
+    "name": "Наушники",
+    "desc": "Наушники отличные",
+    "category_id": 3,
+    "created_at": "2023-02-21T09:38:39.296Z",
+    "updated_at": "2023-02-21T09:38:39.296Z",
+    "price": "250.00",
+    "img_link": "https://www.kz.sony.ru/image/b789488955522f13ffb4778bd08465c6?fmt=pjpeg&wid=330&bgcolor=FFFFFF&bgc=FFFFFF"
+  }
+},
+{
+  "model": "online_store.product",
+  "pk": 22,
+  "fields": {
+    "name": "Смарт часы",
+    "desc": "Умные смарт часы",
+    "category_id": 1,
+    "created_at": "2023-02-21T09:39:37.228Z",
+    "updated_at": "2023-02-21T09:39:37.228Z",
+    "price": "55.00",
+    "img_link": "https://images.satu.kz/54161700_w640_h640_sensornye-umnye-chasy.jpg"
+  }
+},
+{
+  "model": "online_store.product",
+  "pk": 23,
+  "fields": {
+    "name": "Соковыжималка",
+    "desc": "Отлично выжимает соки",
+    "category_id": 2,
+    "created_at": "2023-02-21T09:40:23.386Z",
+    "updated_at": "2023-02-21T09:40:23.386Z",
+    "price": "890.00",
+    "img_link": "https://www.mechta.kz/export/1cbitrix/import_files/05/057da0f1-759f-11e7-80d6-704d7bb700a8-1024.webp"
+  }
+},
+{
+  "model": "online_store.product",
+  "pk": 24,
+  "fields": {
+    "name": "Мясорубка",
+    "desc": "Необходимое приспособление для кухни",
+    "category_id": 2,
+    "created_at": "2023-02-21T09:41:22.133Z",
+    "updated_at": "2023-02-21T09:41:22.133Z",
+    "price": "540.00",
+    "img_link": "https://ivicity.kz/download/images/IMG_7872.jpg"
   }
 },
 {
