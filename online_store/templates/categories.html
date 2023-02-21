@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Категории</h1>
+        {% for category in categories %}
+            <div class="form-control">
+                <h3>{{category.name}}</h3>
+                <p> Описание: {{category.desc}}</p>
+                <a href="{% url 'remove_category' category.pk %}" class="btn btn-primary rm-btn" onclick="alert('Удалить данные?')">Удалить</a>
+            </div>
+             <br>
+        {% endfor %}
+    </div>
+{% endblock %}
