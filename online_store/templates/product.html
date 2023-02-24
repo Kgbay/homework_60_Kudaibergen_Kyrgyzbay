@@ -16,6 +16,7 @@
                 <i>Создан: {{ product.created_at }}</i>
                 <p></p>
                 <a href="{% url 'remove_product' product.pk %}" class="btn btn-primary rm-btn" onclick="alert('Удалить данные?')">Удалить</a>
+                <a href="{% url 'product_update' product.pk %}" class="btn btn-primary green-btn">Редактировать</a>
             </div>
         </div>
     </div>

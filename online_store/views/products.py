@@ -31,3 +31,20 @@ def product_remove_view(request, pk):
     context = {'product': product}
     product.delete()
     return render(request, 'remove_product.html', context=context)
+
+def product_update_view(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    categories = Category.objects.all()
+    if request.method == 'POST':
+        product.name = request.POST.get('name')
+        product.desc = request.POST.get('desc')
+        product.category_id = request.POST.get('category_id')
+        product.price = request.POST.get('price')
+        product.img_link = request.POST.get('img_link')
+        product.save()
+        return redirect('product_view', pk=product.pk)
+    return render(request, 'product_update.html', context={
+        'product': product,
+        'categories': categories
+    })
+

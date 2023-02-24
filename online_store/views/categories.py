@@ -26,6 +26,18 @@ def category_remove_view(request, pk):
     category.delete()
     return render(request, 'remove_category.html', context=context)
 
+def category_update_view(request, pk):
+    category = get_object_or_404(Category, pk=pk)
+    if request.method == 'POST':
+        category.name = request.POST.get('name')
+        category.desc = request.POST.get('desc')
+        category.save()
+        return redirect('category_view', pk=category.pk)
+    return render(request, 'category_update.html', context={
+        'category': category
+    })
+
+
 
 
 

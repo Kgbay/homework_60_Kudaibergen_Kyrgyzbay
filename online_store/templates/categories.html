@@ -8,6 +8,7 @@
                 <h3>{{category.name}}</h3>
                 <p> Описание: {{category.desc}}</p>
                 <a href="{% url 'remove_category' category.pk %}" class="btn btn-primary rm-btn" onclick="alert('Удалить данные?')">Удалить</a>
+                <a href="{% url 'category_update' category.pk %}" class="btn btn-primary upd-btn">Редактировать</a>
             </div>
              <br>
         {% endfor %}
