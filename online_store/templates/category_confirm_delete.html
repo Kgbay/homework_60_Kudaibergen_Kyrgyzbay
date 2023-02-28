@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+     <div class="container">
+        <h1>Вы точно хотите удалить выбранную категорию?</h1>
+        <p>Наименование: {{ category.name }}</p>
+        <p>Описание: {{ category.desc }}</p>
+             <form action="{% url 'confirm_remove_category' category.pk %}" method="post" class="form-confirm">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-primary" value="Удалить">
+                <a href="{% url 'categories_view' category.pk %}" class="btn btn-primary">Отмена</a>
+            </form>
+     </div>
+{% endblock %}

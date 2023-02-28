@@ -27,10 +27,13 @@ def product_view(request, pk):
     })
 
 def product_remove_view(request, pk):
-    product = Product.objects.get(pk=pk)
-    context = {'product': product}
+    product = get_object_or_404(Product, pk=pk)
+    return render(request, 'product_confirm_delete.html', context={'product': product})
+
+def product_confirm_remove(request, pk):
+    product = get_object_or_404(Product, pk=pk)
     product.delete()
-    return render(request, 'remove_product.html', context=context)
+    return redirect('products_view')
 
 def product_update_view(request, pk):
     product = get_object_or_404(Product, pk=pk)

@@ -68,6 +68,9 @@ form, .form-control {
 .upd-btn:hover {
     background-color: green !important;
 }
+.red-btn {
+    background-color: red !important;
+}
 footer {
     height: 100px;
     width: auto;

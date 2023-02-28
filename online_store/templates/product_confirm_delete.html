@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Вы точно хотите удалить выбранный товар?</h1>
+        <div class="row justify-content-center align-items-center">
+                <img src="{{ product.img_link }}" class="col-lg-6 col-md-3-">
+            <div class="col">
+                <h3>{{ product.name }}</h3>
+                <p><b>Цена: {{ product.price }}</b></p>
+            </div>
+            <form action="{% url 'confirm_remove_product' product.pk %}" method="post" class="form-confirm">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-primary" value="Удалить">
+                <a href="{% url 'products_view' %}" class="btn btn-primary">Отмена</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}

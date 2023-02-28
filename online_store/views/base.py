@@ -7,7 +7,7 @@ from online_store.models import Product, Category
 
 # Create your views here.
 def products_view(request: WSGIRequest):
-    products = Product.objects.all()
+    products = Product.objects.exclude(is_deleted=True)
     categories = Category.objects.all()
     context = {
         'products': products,
@@ -16,7 +16,7 @@ def products_view(request: WSGIRequest):
     return render(request, 'index.html', context=context)
 
 def categories_view(request):
-    categories = Category.objects.all()
+    categories = Category.objects.exclude(is_deleted=True)
     context = {
         'categories': categories
     }

@@ -14,17 +14,24 @@ def category_add_view(request: WSGIRequest):
     category = Category.objects.create(**category_data)
     return redirect('category_view', pk=category.pk)
 
+
 def category_view(request, pk):
     category = get_object_or_404(Category, pk=pk)
     return render(request, 'category.html', context={
         'category': category
     })
 
+
 def category_remove_view(request, pk):
-    category = Category.objects.get(pk=pk)
-    context = {'category': category}
+    category = get_object_or_404(Category, pk=pk)
+    return render(request, 'category_confirm_delete.html', context={'category': category})
+
+
+def category_confirm_remove(request, pk):
+    category = get_object_or_404(Category, pk=pk)
     category.delete()
-    return render(request, 'remove_category.html', context=context)
+    return redirect('categories_view')
+
 
 def category_update_view(request, pk):
     category = get_object_or_404(Category, pk=pk)
@@ -36,8 +43,3 @@ def category_update_view(request, pk):
     return render(request, 'category_update.html', context={
         'category': category
     })
-
-
-
-
-
