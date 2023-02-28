@@ -7,7 +7,7 @@ from django.utils import timezone
 class Product(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False, verbose_name='Наименование')
     desc = models.TextField(max_length=3000, null=True, verbose_name='Описание', default='Описание товара')
-    category_id = models.IntegerField(null=False, verbose_name='id категорий')
+    category_id = models.IntegerField(null=False, verbose_name='id категорий', default='')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата и время создания')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата и время обновления')
     price = models.DecimalField(max_digits=5, decimal_places=2, verbose_name='Цена', )
@@ -26,7 +26,7 @@ class Product(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False, verbose_name='Наименование')
-    desc = models.TextField(max_length=3000, null=True, verbose_name='Описание', default='Описание товара')
+    desc = models.TextField(max_length=200, null=True, verbose_name='Описание', default='Описание товара')
     is_deleted = models.BooleanField(verbose_name='удалено', null=False, default=False)
     deleted_at = models.DateTimeField(verbose_name='Дата и время удаления', null=True, default=None)
 
