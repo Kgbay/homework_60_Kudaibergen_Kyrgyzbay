@@ -23,7 +23,7 @@
                     <select id="category_id" name="category_id" class="form-control" required>
                             <option>Выберите категорию</option>
                             {% for category in categories %}
-                                <option value="{{ product.category_id }}">{{ category.name }}</option>
+                                <option value="{{ category.id }}">{{ category.name }}</option>
                             {% endfor %}
                     </select>
                 </div>
