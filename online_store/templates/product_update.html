@@ -21,9 +21,11 @@
 
                 <div class="mb-3">
                     <select id="category_name" name="category_name" class="form-control" required>
-                            <option value="{{  }}">{ category.name }</option>
                             {% for choice in choices %}
-                                <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                                {% if category_name == choice.1 %}
+                                    <option value="{{ choice.1 }}">{{ product.category_name }}</option>
+                                {% endif %}
+                                    <option value="{{ choice.0 }}">{{ choice.1 }}</option>
                             {% endfor %}
                     </select>
                 </div>

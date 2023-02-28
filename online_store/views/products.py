@@ -24,7 +24,8 @@ def product_add_view(request: WSGIRequest):
 def product_view(request, pk):
     product = get_object_or_404(Product, pk=pk)
     return render(request, 'product.html', context={
-        'product': product
+        'product': product,
+        'choices': CategoryChoice.choices
     })
 
 def product_remove_view(request, pk):
@@ -47,6 +48,7 @@ def product_update_view(request, pk):
         product.save()
         return redirect('product_view', pk=product.pk)
     return render(request, 'product_update.html', context={
-        'product': product
+        'product': product,
+        'choices': CategoryChoice.choices
     })
 
