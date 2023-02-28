@@ -3,15 +3,18 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from online_store.models import Product
 
+from online_store.models import CategoryChoice
+
+
 def product_add_view(request: WSGIRequest):
     if request.method == "GET":
         products = Product.objects.all()
-        context = {'products': products}
+        context = {'products': products, 'choices': CategoryChoice.choices}
         return render(request, 'product_create.html', context=context)
     product_data = {
         'name': request.POST.get('name'),
         'desc': request.POST.get('desc'),
-        'category_id': request.POST.get('category_id'),
+        'category_name': request.POST.get('category_name'),
         'price': request.POST.get('price'),
         'img_link': request.POST.get('img_link')
     }

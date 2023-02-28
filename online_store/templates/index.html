@@ -8,14 +8,10 @@
                     <div class="card" style="width: 20rem;">
                       <img src="{{ product.img_link }}" class="card-img-top" alt="Рисунок {{ product.name }}">
                       <div class="card-body">
-                        <h5 class="card-title">{{ product.name }}</h5>
-                        <p class="card-text">Цена: {{ product.price }} $</p>
-                      {% for category in categories%}
-                          {% if category.id == product.category_id %}
-                            <p class="card-text">Категория: {{ category.name }}</p>
-                          {% endif %}
-                      {% endfor %}
-                            <a href="{% url 'product_view' product.pk %}" class="btn btn-primary">Подробнее...</a>
+                          <h5 class="card-title">{{ product.name }}</h5>
+                          <p class="card-text">Цена: {{ product.price }} $</p>
+                          <p class="card-text">Категория: {{ product.category_name }}</p>
+                          <a href="{% url 'product_view' product.pk %}" class="btn btn-primary">Подробнее...</a>
                       </div>
                     </div>
             {% endfor %}

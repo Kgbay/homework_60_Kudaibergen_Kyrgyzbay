@@ -20,10 +20,10 @@
                 </div>
 
                 <div class="mb-3">
-                    <select id="category_id" name="category_id" class="form-control" required>
+                    <select id="category_name" name="category_name" class="form-control" required>
                             <option>Выберите категорию</option>
-                            {% for category in categories %}
-                                <option value="{{ category.id }}">{{ category.name }}</option>
+                            {% for choice in choices %}
+                                <option value="{{ choice.0 }}">{{ choice.1 }}</option>
                             {% endfor %}
                     </select>
                 </div>
