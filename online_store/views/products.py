@@ -1,9 +1,7 @@
 from django.core.handlers.wsgi import WSGIRequest
 from django.shortcuts import render, redirect, get_object_or_404
 
-from online_store.models import Product
-
-from online_store.models import CategoryChoice
+from online_store.models import Product, CategoryChoice
 
 
 def product_add_view(request: WSGIRequest):
