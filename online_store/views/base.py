@@ -1,20 +1,46 @@
-from django.core.handlers.wsgi import WSGIRequest
-from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
+from django.db.models import Q
+from django.utils.http import urlencode
+from django.views.generic import ListView, RedirectView
 
 from online_store.models import Product
+from online_store.forms import SearchForm
 
 
-# Create your views here.
-def products_view(request: WSGIRequest):
-    products = Product.objects.exclude(is_deleted=True)
-    context = {
-        'products': products,
-    }
-    return render(request, 'index.html', context=context)
+class ProductView(ListView):
+    template_name = 'index.html'
+    model = Product
+    context_object_name = 'products'
+    ordering = ['name']
+    paginate_by = 4
+    allow_empty = False
+
+    def get(self, request, *args, **kwargs):
+        self.form = self.get_search_form()
+        self.search_value = self.get_search_value()
+        return super().get(request, *args, **kwargs)
+
+    def get_search_form(self):
+        return SearchForm(self.request.GET)
+
+    def get_search_value(self):
+        if self.form.is_valid():
+            return self.form.cleaned_data['search']
+        return None
+
+    def get_queryset(self):
+        queryset = super().get_queryset().exclude(is_deleted=True)
+        if self.search_value:
+            query = Q(name__icontains=self.search_value) | Q(desc__icontains=self.search_value)
+            queryset = queryset.filter(query)
+        return queryset
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['form'] = self.form
+        if self.search_value:
+            context['query'] = urlencode({'search': self.search_value})
+        return context
 
 
-
-
-
-
+class IndexRedirectView(RedirectView):
+    pattern_name = 'index'

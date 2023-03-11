@@ -1,42 +1,10 @@
-{% extends 'base.html' %}
-{% block title %}Home{% endblock %}
+{% extends "base.html" %}
+{% block title %}Add product{% endblock %}
 {% block content %}
-     <div class="container">
-         <div>
-             <h1>Добавление нового товара</h1>
-            <form action="{% url 'product_add' %}" method="post">
-                {% csrf_token %}
-
-                <div class="mb-3">
-                    <input type="text" id="name" name="name" placeholder="Наименование" class="form-control" required>
-                </div>
-
-                <div class="mb-3">
-                    <input type="number" id="price" name="price" placeholder="Цена" class="form-control" required>
-                </div>
-
-                <div class="mb-3">
-                    <input type="text" id="img_link" name="img_link" placeholder="Ссылка на картинку" class="form-control" required>
-                </div>
-
-                <div class="mb-3">
-                    <select id="category_name" name="category_name" class="form-control" required>
-                            <option>Выберите категорию</option>
-                            {% for choice in choices %}
-                                <option value="{{ choice.0 }}">{{ choice.1 }}</option>
-                            {% endfor %}
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <textarea id="desc" name="desc" placeholder="Описание" class="form-control" rows="4" required></textarea>
-                </div>
-
-                <div class="mb-3">
-                    <input type="submit" class="form-control submit" value="Отправить">
-                </div>
-
-            </form>
-         </div>
-     </div>
-{% endblock %}
+  <div class="container">
+    <h1>Добавить товар</h1>
+        <form action="{% url 'product_add' %}" method="post" class="form-add">
+              {% include 'partial/product_form.html' with button_text='Создать' %}
+        </form>
+  </div>
+{% endblock content %}

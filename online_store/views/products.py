@@ -1,52 +1,34 @@
-from django.core.handlers.wsgi import WSGIRequest
-from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse, reverse_lazy
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
 from online_store.models import Product, CategoryChoice
+from online_store.forms import ProductForm
 
 
-def product_add_view(request: WSGIRequest):
-    if request.method == "GET":
-        products = Product.objects.all()
-        context = {'products': products, 'choices': CategoryChoice.choices}
-        return render(request, 'product_create.html', context=context)
-    product_data = {
-        'name': request.POST.get('name'),
-        'desc': request.POST.get('desc'),
-        'category_name': request.POST.get('category_name'),
-        'price': request.POST.get('price'),
-        'img_link': request.POST.get('img_link')
-    }
-    product = Product.objects.create(**product_data)
-    return redirect('product_view', pk=product.pk)
+class ProductDetail(DetailView):
+    template_name = 'product.html'
+    model = Product
 
-def product_view(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    return render(request, 'product.html', context={
-        'product': product,
-        'choices': CategoryChoice.choices
-    })
 
-def product_remove_view(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    return render(request, 'product_confirm_delete.html', context={'product': product})
+class ProductCreateView(CreateView):
+    template_name = 'product_create.html'
+    model = Product
+    form_class = ProductForm
 
-def product_confirm_remove(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    product.delete()
-    return redirect('products_view')
+    def get_success_url(self):
+        return reverse('product_view', kwargs={'pk': self.object.pk})
 
-def product_update_view(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    if request.method == 'POST':
-        product.name = request.POST.get('name')
-        product.desc = request.POST.get('desc')
-        product.category_name = request.POST.get('category_name')
-        product.price = request.POST.get('price')
-        product.img_link = request.POST.get('img_link')
-        product.save()
-        return redirect('product_view', pk=product.pk)
-    return render(request, 'product_update.html', context={
-        'product': product,
-        'choices': CategoryChoice.choices
-    })
 
+class ProductUpdateView(UpdateView):
+    template_name = 'product_update.html'
+    form_class = ProductForm
+    model = Product
+
+    def get_success_url(self):
+        return reverse('product_view', kwargs={'pk': self.object.pk})
+
+
+class TaskDeleteView(DeleteView):
+    template_name = 'product_confirm_delete.html'
+    model = Product
+    success_url = reverse_lazy('products_view')
