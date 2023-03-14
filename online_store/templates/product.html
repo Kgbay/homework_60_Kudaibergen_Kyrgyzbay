@@ -5,18 +5,19 @@
         <div class="row justify-content-center align-items-center">
                 <img src="{{ product.img_link }}" class="col-lg-6 col-md-3-">
             <div class="col">
-                <h1>{{ product.name }}</h1>
-                {% for category in categories %}
-                    {% if category.id == product.category_id %}
-                        <p>Категория: {{ category.name }}</p>
-                    {%  endif %}
-                {% endfor %}
-                <p><b>Цена: {{ product.price }}</b></p>
-                <p>Описание: {{ product.desc }}</p>
-                <i>Создан: {{ product.created_at }}</i>
-                <p></p>
-                <a href="{% url 'remove_product' product.pk %}" class="btn btn-primary rm-btn">Удалить</a>
-                <a href="{% url 'product_update' product.pk %}" class="btn btn-primary green-btn">Редактировать</a>
+                    <h1>{{ product.name }}</h1>
+                    {% for category in categories %}
+                        {% if category.id == product.category_id %}
+                            <p>Категория: {{ category.name }}</p>
+                        {%  endif %}
+                    {% endfor %}
+                    <p><b>Цена: {{ product.price }}</b></p>
+                    <p>Описание: {{ product.desc }}</p>
+                    <p>Остаток товара: {{ product.residue }}</p>
+                    <i>Создан: {{ product.created_at }}</i>
+                    <p></p>
+                    <a href="{% url 'remove_product' product.pk %}" class="btn btn-primary rm-btn">Удалить</a>
+                    <a href="{% url 'product_update' product.pk %}" class="btn btn-primary green-btn">Редактировать</a>
             </div>
         </div>
     </div>

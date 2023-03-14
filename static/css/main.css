@@ -111,3 +111,9 @@ footer {
     text-align: center;
     border: solid 1px gray;
 }
+.search_form, .current-page, .form-confirm {
+    border-color: transparent !important;
+}
+.current-page {
+    height: auto;
+}
