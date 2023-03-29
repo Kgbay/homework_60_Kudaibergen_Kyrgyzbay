@@ -10,9 +10,9 @@ class ProductView(ListView):
     template_name = 'index.html'
     model = Product
     context_object_name = 'products'
-    ordering = ['name']
+    ordering = ['name', 'desc']
     paginate_by = 4
-    allow_empty = False
+    paginate_orphans = 4
 
     def get(self, request, *args, **kwargs):
         self.form = self.get_search_form()

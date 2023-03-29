@@ -2,6 +2,24 @@
 {% block title %}Home{% endblock %}
 {% block content %}
     <div class="container">
-
+        <h3>Корзина</h3>
+        <div class="products-card">
+        {% for product in products %}
+            {% for basket_product in basket_products %}
+                {% if basket_product.in_basket and product.id == basket_product.product_id %}
+                    <div class="card" style="width: 20rem;">
+                      <img src="{{ product.img_link }}" class="card-img-top" alt="Рисунок {{ product.name }}">
+                      <div class="card-body">
+                          <h5 class="card-title">{{ product.name }}</h5>
+                          <p class="card-text">Цена: {{ product.price }} $</p>
+                          <a href="{% url 'product_view' product.pk %}" class="btn btn-primary" title="Подробнее"><i class="fa fa-info" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        </div>
+        <a href="#" class="btn btn-primary" title="Оформить заказ">Оформить заказ</a>
+        <a href="#" class="btn btn-primary" title="Очистить корзину">Очистить корзину</a>
     </div>
 {% endblock %}

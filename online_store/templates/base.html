@@ -24,7 +24,7 @@
               <div class="navbar-nav ml-auto">
                   <a href="{% url 'products_view' %}" class="btn btn-outline-primary">Товары</a>
                   <a href="{% url 'product_add' %}" class="btn btn-outline-primary">Добавить товар</a>
-                  <a href="#" class="btn btn-outline-primary">Корзина</a>
+                  <a href="{% url 'basket_view' %}" class="btn btn-outline-primary">Корзина</a>
               </div>
               </div>
           </div>
@@ -35,5 +35,11 @@
     <footer class="footer">
         <div class="container"></div>
     </footer>
+
+<script>
+    function myFunction() {
+        alert("Товар добавлен в корзину");
+    }
+</script>
 </body>
 </html>

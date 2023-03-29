@@ -14,7 +14,7 @@ class Basket_product(models.Model):
     )
     amount = models.PositiveIntegerField(
         null=False,
-        default=0,
+        default=1,
         verbose_name='Количество'
     )
     created_at = models.DateTimeField(
@@ -26,7 +26,7 @@ class Basket_product(models.Model):
     in_basket = models.BooleanField(
         verbose_name='В корзине',
         null=False,
-        default=False
+        default=True
     )
     added_at = models.DateTimeField(
         verbose_name='Дата и время удаления',
